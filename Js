@@ -1,0 +1,130 @@
+class Witch {
+    constructor() {
+        this.health = 50;
+        this.damage = 5;
+        this.sound = "hehehehehe!";
+        console.log ("New Witch created") ;
+    }
+  }
+
+  class Ghost {
+    constructor() {
+        this.health = 50;
+        this.damage = 4;
+        this.sound = "boo...";
+        console.log("Some Random person died");
+    }
+}
+
+class Beholder {
+    constructor() {
+        this.health = 150;
+        this.damage = 10;
+        this.sound = "gargle...";
+        console.log("Where is your god now.");
+    }
+}
+class Goblin {
+    constructor() {
+        this.health = 30;
+        this.damage = 13;
+        this.sound = "myyyaaah!";
+        console.log("Me take your life or your gold");
+    }
+}
+
+class Ogre {
+    constructor() {
+        this.health = 50;
+        this.damage = 8;
+        this.sound = "ruaaaah";
+        console.log("Get out of my swamp");
+    }
+}
+
+class Demon {
+    constructor() {
+        this.health = 75;
+        this.damage = 15;
+        this.sound = "Screeeech!";
+        console.log("muinomead");
+    }
+}
+
+function random (min, max){
+    return Math.random() * (max - min) + min;
+}
+
+const monsterlist = [Goblin, Beholder, Ghost, Witch, Ogre, Demon];
+
+let Monsters1 = new monsterlist[parseInt(random(0,5))]();
+let Monsters2 = new monsterlist[parseInt(random(0,5))]();
+
+
+
+
+
+
+
+class Dice {
+    constructor() {}
+
+    rollDice() {
+        
+        this.face = Math.floor(Math.random() * 6) + 1; // randomly get number 1-6
+        console.log ("rolling dice: " + "a " + this.face + "!");
+        return this.face;
+    }
+}
+
+
+// let ghost = new Ghost();
+// let witch = new Witch();
+
+
+let dice1 = new Dice();
+let dice2 = new Dice();
+
+
+
+
+function Fight(){
+
+    // let monster1 = m1;
+    // monster1.name = "witch";
+    // let monster2 = m2;
+    // monster2.name = "ghost";
+
+    let m1Roll = dice1.rollDice();
+    let m2Roll = dice2.rollDice();
+
+    while (Monsters2.health >=1 && Monsters1.health >= 1){
+
+    m1Roll = dice1.rollDice();
+    m2Roll = dice2.rollDice();
+
+    if (m1Roll === m2Roll ) {
+        console.log("it's a tie, roll again.");
+
+    } else if (m1Roll > m2Roll) {
+         Monsters1.health += -1 * Monsters2.damage;
+        console.log(Monsters1.constructor.name + " took damage");
+        console.log(Monsters1.health + " health remaining!");
+
+    } else {
+        Monsters2.health += -1 * Monsters1.damage;
+        console.log(Monsters2.constructor.name + " took damage"); 
+        console.log(Monsters2.health + " health remaining!");
+    }
+//DISPLAY WIN 
+    if(Monsters2.health<=0){
+        console.log(Monsters1.constructor.name + " wins")
+    }else if(Monsters1.health<=0){
+        console.log(Monsters2.constructor.name + " wins")
+    }
+}
+}
+
+
+Fight();
+
